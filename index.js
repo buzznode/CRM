@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { static as exStatic } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
@@ -24,6 +24,9 @@ app.use(
 app.use(bodyParser.json());
 
 routes(app);
+
+// serve static files
+app.use(exStatic('public'));
 
 app.get('/', (req, res) =>
   res.send(`Node and Express server running on port: ${PORT}`)

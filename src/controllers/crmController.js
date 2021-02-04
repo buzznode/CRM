@@ -45,3 +45,12 @@ export const updateContact = (req, res) => {
     }
   );
 };
+
+export const deleteContact = (req, res) => {
+  Contact.findOneAndRemove({ _id: req.params.contactID }, (err, contact) => {
+    if (err) {
+      res.send(`An error occurred: ${err}`);
+    }
+    res.json({ message: 'Successfully deleted contact' });
+  });
+};
